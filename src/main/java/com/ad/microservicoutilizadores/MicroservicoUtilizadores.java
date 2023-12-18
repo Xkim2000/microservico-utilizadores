@@ -24,6 +24,7 @@ public class MicroservicoUtilizadores implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		repositorioUtilizadores.save(new Utilizador("Ana", "Sarzedas", "ana@gmail.com", bCryptPasswordEncoder.encode("joaquim")));
+		//teste:
+		//repositorioUtilizadores.save(new Utilizador("Ana", "Sarzedas", "ana@gmail.com", bCryptPasswordEncoder.encode("joaquim")));
 	}
 }
