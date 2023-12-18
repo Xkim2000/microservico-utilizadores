@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.ad.microservico-mysql' is invalid and this project uses 'com.ad.microservicomysql' instead.
+* The original package name 'com.ad.microservico-mysql' is invalid and this project uses 'com.ad.microservicoutilizadores' instead.
 
 # Getting Started
 

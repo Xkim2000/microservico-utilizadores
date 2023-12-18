@@ -1,4 +1,4 @@
-package com.ad.microservicomysql;
+package com.ad.microservicoutilizadores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -7,10 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroservicoMysqlApplication implements ApplicationRunner {
+public class MicroservicoUtilizadores implements ApplicationRunner {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroservicoMysqlApplication.class, args);
+		SpringApplication.run(MicroservicoUtilizadores.class, args);
 	}
 
 	@Autowired
