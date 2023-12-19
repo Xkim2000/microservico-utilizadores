@@ -10,18 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-public class MicroservicoUtilizadores implements ApplicationRunner {
+public class MicroservicoUtilizadores {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MicroservicoUtilizadores.class, args);
 	}
 
-	@Autowired
-	RepositorioUtilizadores repositorioUtilizadores;
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		//teste:
-		//repositorioUtilizadores.save(new Utilizador("Ana", "Sarzedas", "ana@gmail.com", bCryptPasswordEncoder.encode("joaquim")));
-	}
 }
