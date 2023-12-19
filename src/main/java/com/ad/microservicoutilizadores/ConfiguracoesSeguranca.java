@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+
 
 @EnableWebSecurity
 @Configuration
@@ -25,8 +27,18 @@ public class ConfiguracoesSeguranca {
         http.authorizeHttpRequests((autorizacao) -> autorizacao
                         .anyRequest().permitAll()
                 )
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+                .formLogin(AbstractHttpConfigurer::disable)
+                .sessionManagement(AbstractHttpConfigurer::disable)
+                .logout(AbstractHttpConfigurer::disable);
         return http.build();
+    }
+    @Bean
+    public AuthenticationManager
+    authenticationManager(AuthenticationConfiguration configuration)
+            throws Exception {
+        return configuration.getAuthenticationManager();
     }
 
 }
