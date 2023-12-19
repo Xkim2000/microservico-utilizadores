@@ -12,16 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ControladorRestUtilizadores {
 
     @Autowired
-    @Qualifier("codificador.bcrypt")
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Autowired
     private RepositorioUtilizadores repositorioUtilizadores;
 
     @PostMapping("/registar")
     public Utilizador registarUtilizador(@RequestBody Utilizador utilizador){
         try {
-            utilizador.setPassword(bCryptPasswordEncoder.encode(utilizador.getPassword()));
+            System.out.println(utilizador);
             this.repositorioUtilizadores.save(utilizador);
             return utilizador;
         }  catch (Exception e) {

@@ -18,10 +18,6 @@ public class MicroservicoUtilizadores implements ApplicationRunner {
 	@Autowired
 	RepositorioUtilizadores repositorioUtilizadores;
 
-	@Autowired
-	@Qualifier("codificador.bcrypt")
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		//teste:
