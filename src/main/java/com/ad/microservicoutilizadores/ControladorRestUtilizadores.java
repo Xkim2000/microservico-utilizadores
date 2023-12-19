@@ -28,6 +28,4 @@ public class ControladorRestUtilizadores {
             return null;
         }
     }
-
-
 }
