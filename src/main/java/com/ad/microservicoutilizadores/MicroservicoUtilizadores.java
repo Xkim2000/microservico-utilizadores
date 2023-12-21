@@ -9,21 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-public class MicroservicoUtilizadores implements ApplicationRunner {
+public class MicroservicoUtilizadores {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MicroservicoUtilizadores.class, args);
 	}
 
-	@Autowired
-	RepositorioUtilizadores repositorioUtilizadores;
-
-	@Autowired
-	@Qualifier("codificador.bcrypt")
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		repositorioUtilizadores.save(new Utilizador("Ana", "Sarzedas", "ana@gmail.com", bCryptPasswordEncoder.encode("joaquim")));
-	}
 }
