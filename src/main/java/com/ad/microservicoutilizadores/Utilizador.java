@@ -11,13 +11,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"nome"})})
 public class Utilizador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique=true)
+    @Column(name = "nome")
     private String nome;
+
     private String morada;
     private String email;
     private String password;
