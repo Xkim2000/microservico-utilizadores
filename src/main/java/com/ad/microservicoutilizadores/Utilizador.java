@@ -21,7 +21,11 @@ public class Utilizador {
     private String morada;
     private String email;
     private String password;
+
     private boolean disabled = false;
+
+    //@Transient
+    private String role;
 
     public Utilizador(String nome, String morada, String email, String password) {
         this.nome = nome;
