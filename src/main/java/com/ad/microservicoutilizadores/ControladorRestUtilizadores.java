@@ -47,5 +47,4 @@ public class ControladorRestUtilizadores {
             return Optional.empty(); // ou null, dependendo da sua lógica
         }
     }
-
 }
