@@ -1,15 +1,14 @@
 package com.ad.microservicoutilizadores;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -46,6 +45,18 @@ public class ControladorRestUtilizadores {
         } catch (Exception e) {
             return Optional.empty(); // ou null, dependendo da sua lógica
         }
+    }
+
+    @GetMapping("/admin/listarutilizadores")
+    public List<Utilizador> listarTodosUtilizadores(){return repositorioUtilizadores.findAllBy();}
+
+    @Transactional
+    @DeleteMapping("/deleteutilizadores/{id}")
+    public void apagarUtilizador(@PathVariable Integer id) {
+        if(!repositorioUtilizadores.existsById(id))
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        else
+            repositorioUtilizadores.deleteById(id);
     }
 
 }
