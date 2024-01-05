@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -57,6 +58,34 @@ public class ControladorRestUtilizadores {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         else
             repositorioUtilizadores.deleteById(id);
+    }
+
+    @GetMapping("/admin/disable")
+    public ResponseEntity<String> disableUser(@RequestParam("id") int id) {
+        Optional<Utilizador> optionalUser = repositorioUtilizadores.findById(id);
+
+        if (optionalUser.isPresent()) {
+            Utilizador user = optionalUser.get();
+            user.setDisabled(true);
+            repositorioUtilizadores.save(user);
+            return ResponseEntity.ok("Utilizador desativado com sucesso.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado.");
+        }
+    }
+
+    @GetMapping("/admin/enable")
+    public ResponseEntity<String> enableUser(@RequestParam("id") int id) {
+        Optional<Utilizador> optionalUser = repositorioUtilizadores.findById(id);
+
+        if (optionalUser.isPresent()) {
+            Utilizador user = optionalUser.get();
+            user.setDisabled(false);
+            repositorioUtilizadores.save(user);
+            return ResponseEntity.ok("Utilizador ativado com sucesso.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utilizador não encontrado.");
+        }
     }
 
 }
